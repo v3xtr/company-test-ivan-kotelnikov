@@ -1,7 +1,7 @@
-import { IBookingService } from "../../adapters/interfaces/IBookingService.js";
-import { IBookingRepository } from '../../adapters/interfaces/IBookingRepository.js'
 import { Booking } from "@prisma/client";
 import { IEventsRepository } from "#internal/adapters/interfaces/IEventRepository.js";
+import { IBookingService } from "#internal/adapters/interfaces/IBookingService.js";
+import { IBookingRepository } from "#internal/adapters/interfaces/IBookingRepository.js";
 
 export class BookingService implements IBookingService {
     constructor(
@@ -13,7 +13,7 @@ export class BookingService implements IBookingService {
         const eventExists = await this.eventsRepo.exists(event_id);
         
         if (!eventExists) {
-            const error: any = new Error("Event not found");
+            const error: any = new Error("Событие не найдено");
             error.isBookingError = true;
             throw error;
         }
@@ -21,7 +21,7 @@ export class BookingService implements IBookingService {
         const bookingExists = await this.bookingRepo.hasBooking(event_id, user_id);
         
         if (bookingExists) {
-            const error: any = new Error("User already booked this event");
+            const error: any = new Error("Пользователь уже забронировал данное событие");
             error.isBookingError = true;
             throw error;
         }
