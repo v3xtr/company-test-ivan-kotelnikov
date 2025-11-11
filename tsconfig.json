@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "es2024",
     "module": "NodeNext",
-    "lib": ["ES2020"],
+    "lib": ["ES2024"],
     "rootDir": ".",
     "outDir": "./dist",
     "resolveJsonModule": true,
