@@ -37,7 +37,6 @@ docker-compose up
 
 Приложение будет доступно на http://localhost:8000
 
-.
 ### 4. Работа с Prisma
 
 ```bash
