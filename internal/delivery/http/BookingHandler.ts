@@ -1,12 +1,12 @@
 import { IBookingService } from "#internal/adapters/interfaces/IBookingService.js";
 import { Request, Response } from "express";
 import { ReserveBookingRequest, ReserveBookingSchema } from "#internal/validation/bookValidation.js";
-import type { IBookingHandler } from "#internal/adapters/interfaces/IBookingController.js";
+import type { IBookingHandler } from "#internal/adapters/interfaces/IBookingHandler.js";
 
 export class BookingHandler implements IBookingHandler {
   constructor(private readonly bookingService: IBookingService) {}
 
-  async book(req: Request<{}, {}, ReserveBookingRequest>, res: Response) {
+  async book(req: Request<{}, {}, ReserveBookingRequest>, res: Response): Promise<Response | any> {
     try {
         const parsedResult = ReserveBookingSchema.safeParse(req.body);
 
